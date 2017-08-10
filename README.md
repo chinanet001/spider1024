@@ -10,14 +10,14 @@ c.index_page()
 c.start(type="yazhouwuma",page_start=1,page_end=20,max_thread_num=50)
 ```
 type参数负责下载类型，其对应如下:
-|下载类型|type|
-|:--:|:--:|
-|亚洲无码|yazhouwuma|
-|亚洲有码|yazhouyouma|
-|欧美原创|oumeiyuanchuang|
-|动漫原创|dongmanyuanchuang|
-|国产原创|guochanyuanchuang|
-|中字原创|zhongziyuanchuang|
+下载类型|type
+--------|-------
+亚洲无码|yazhouwuma
+亚洲有码|yazhouyouma
+欧美原创|oumeiyuanchuang
+动漫原创|dongmanyuanchuang
+国产原创|guochanyuanchuang
+中字原创|zhongziyuanchuang
 
 page_start,page_end代表起始页和终止页
 max_thread_num代表允许程序使用的最大线程数
