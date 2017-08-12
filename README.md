@@ -6,7 +6,6 @@
 ```python
 if __name__ == "__main__":
 c = Caoliu()
-c.index_page()
 c.start(type="yazhouwuma",page_start=1,page_end=20,max_thread_num=50)
 ```
 type参数负责下载类型，其对应如下:

@@ -2,7 +2,7 @@ import requests
 import re
 import os
 import threading
-
+import random
 class Caoliu:
     def __init__(self):
         self.header_data = {
@@ -37,7 +37,7 @@ class Caoliu:
             ref = p_ref.findall(download_text)[0]
             reff = p_reff.findall(download_text)[0]
             r = requests.get("http://www.rmdown.com/download.php?ref="+ref+"&reff="+reff+"&submit=download")
-            with open("torrent_dir\\" + ref + ".torrent", "wb") as f:
+            with open("torrent_dir\\" + ref + str(random.randint(1,100))+".torrent", "wb") as f:
                 f.write(r.content)
         except:
             print("download page " + url + " failed")
@@ -96,5 +96,4 @@ class Caoliu:
                     break
 if __name__ == "__main__":
     c = Caoliu()
-    c.index_page()
-    c.start(type="dongmanyuanchuang",page_start=1,page_end=20,max_thread_num=50)
+    c.start(type="yazhouwuma",page_start=1,page_end=50,max_thread_num=50)
