@@ -3,6 +3,8 @@ import re
 import os
 import threading
 import random
+
+
 class Caoliu:
     def __init__(self):
         self.header_data = {
@@ -36,8 +38,8 @@ class Caoliu:
             p_reff = re.compile("NAME=\"reff\" value=\"(.+?)\"")
             ref = p_ref.findall(download_text)[0]
             reff = p_reff.findall(download_text)[0]
-            r = requests.get("http://www.rmdown.com/download.php?ref="+ref+"&reff="+reff+"&submit=download")
-            with open("torrent_dir\\" + ref + str(random.randint(1,100))+".torrent", "wb") as f:
+            r = requests.get("http://www.rmdown.com/download.php?ref=" + ref + "&reff=" + reff + "&submit=download")
+            with open("torrent_dir\\" + ref + str(random.randint(1, 100)) + ".torrent", "wb") as f:
                 f.write(r.content)
         except:
             print("download page " + url + " failed")
@@ -85,7 +87,7 @@ class Caoliu:
             fid = 26
         else:
             raise ValueError("type wrong!")
-        max_thread_num = min(page_end-page_start+1,max_thread_num)
+        max_thread_num = min(page_end - page_start + 1, max_thread_num)
         thread_list = []
         for i in range(page_start, page_end + 1):
             thread_list.append(threading.Thread(target=self.index_page, args=(fid, i,)))
@@ -94,6 +96,8 @@ class Caoliu:
             while True:
                 if (len(threading.enumerate()) < max_thread_num):
                     break
+
+
 if __name__ == "__main__":
     c = Caoliu()
-    c.start(type="yazhouwuma",page_start=1,page_end=50,max_thread_num=50)
+    c.start(type="yazhouwuma", page_start=1, page_end=50, max_thread_num=50)
